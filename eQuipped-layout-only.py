@@ -20,6 +20,7 @@ import calendar
 from dash.exceptions import PreventUpdate
 
 app = dash.Dash(__name__)
+server = app.server
 
 # load login table
 sql = "SELECT * FROM login"
