@@ -1,1 +1,1 @@
-web: gunicorn eQuipped-layout-only:server
+web: gunicorn IE-253-eQuipped-Chua:server
