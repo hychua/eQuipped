@@ -140,7 +140,7 @@ layout_index = html.Div([
                     style={'color':'rgb(0,123,255)','textAlign':'center',
                            'font-family':'avenir'}),
             
-            html.H3('Which type of data do you need to manage?',
+            html.H3('-- Which type of data do you need to manage? --',
     style={'color':'rgb(0,123,255)','textAlign':'center',
                            'font-family':'avenir'}),
     
@@ -170,11 +170,8 @@ layout_index = html.Div([
                                    'borderRadius':5,
                                    'height':50,'width':200,
                                'font-family':'minion'}),
-            html.Br(),html.Br(),html.Br(),
-            html.Br(),html.Br(),html.Br(),
-            html.Br(),
             ],
-            style={'display':'inline-block'}),
+            style={'display':'block'}),
         
         html.Div([
             html.H3('Master Data',
@@ -224,7 +221,7 @@ layout_index = html.Div([
                                    'height':50,'width':200,
                                'font-family':'minion'}),
             ],
-            style={'display':'inline-block','margin-left':50}),
+            style={'display':'block'}),
         
         html.Div([html.H3('Reports',
                     style={'color':'rgb(0,123,255)','textAlign':'center',
@@ -250,12 +247,9 @@ layout_index = html.Div([
                                'borderRadius':5,
                                'height':50,'width':200,
                                'font-family':'minion'}),
-            html.Br(),html.Br(),html.Br(),
-            html.Br(),html.Br(),html.Br(),
-            html.Br(),
             
             ],
-                 style={'display':'inline-block','margin-left':50}),
+                 style={'display':'block'}),
 
 
                       ],style={'textAlign':'center'}),
