@@ -66,7 +66,6 @@ auth = dash_auth.BasicAuth(
     #db.commit()
     #b.close()
 
-
 # load notification table
 sql0 = "SELECT * FROM notification"
 #df0 = querydatafromdatabase(sql0,[],["id","name","date","priority","equi"])
@@ -123,29 +122,60 @@ name5 = df5.name.unique().tolist()
 image_filename = 'equipped-logo.jpg' # replace with your own image
 encoded_image = base64.b64encode(open(image_filename, 'rb').read())
 
+order_icon = 'order_icon.png' # replace with your own image
+order_encoded_image = base64.b64encode(open(order_icon, 'rb').read())
+equi_icon = 'equi_icon.png' # replace with your own image
+equi_encoded_image = base64.b64encode(open(equi_icon, 'rb').read())
+report_icon = 'report_icon.png' # replace with your own image
+report_encoded_image = base64.b64encode(open(report_icon, 'rb').read())
+
 url_bar_and_content_div = html.Div([
     dcc.Location(id='url', refresh=False),
     html.Div(id='page-content')
 ])
 
 layout_index = html.Div([
+                html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()),
+                     style={'height':100,'display':'inline-block'}),
+                html.Div([
+                    html.H1('WELCOME',
+                            style={'color':'rgb(0,123,255)',
+                                   'font-family':'avenir'}),
+                    
+                    html.H2('to eQuipped Maintenance Manager',
+                            style={'color':'rgb(0,123,255)',
+                                   'font-family':'avenir'}),            
+                        ],
+                        style={'display':'inline-block','margin-left':50}),
+                
+            dcc.Link("Need to Manage User Access? Click Here!", href='/register',
+                     style={'font-family':'avenir','fontSize':16,'display':'inline-block','float':'right'}),
+            
     html.Div(' ',
-        style={'backgroundColor':'rgb(0,123,255)','height':42}),
-    html.Div([
-            html.H1('WELCOME',
-                    style={'color':'rgb(0,123,255)','textAlign':'center',
-                           'font-family':'avenir'}),
+        style={'backgroundColor':'rgb(0,123,255)','height':20,'borderRadius':5}),
+        
+            html.Button(
+                        id='dummy-button',
+                        n_clicks=0,
+                        children='Dummy',
+                        style={'fontSize':18,
+                               'color':'rgb(0,123,255)',
+                               'backgroundColor':'rgb(255,255,255)',
+                               'borderRadius':5,
+                               'height':42,'width':200,
+                               'font-family':'minion', 'float':'right',
+                               'display':'none'}),    
             
-            html.H2('to eQuipped Maintenance Manager',
-                    style={'color':'rgb(0,123,255)','textAlign':'center',
-                           'font-family':'avenir'}),
-            
-            html.H3('-- Which type of data do you need to manage? --',
-    style={'color':'rgb(0,123,255)','textAlign':'center',
-                           'font-family':'avenir'}),
     
     html.Div([
+        html.H2('Which type of data do you need to manage?',
+                            style={'color':'rgb(0,123,255)',
+                                   'font-family':'avenir'}),       
+        
         html.Div([
+            html.Img(src='data:image/png;base64,{}'.format(order_encoded_image.decode()),
+                     style={'width':100}),
+            html.Br(),
             html.H3('Transactional Data',
                     style={'color':'rgb(0,123,255)','textAlign':'center',
                            'font-family':'avenir'}),
@@ -170,10 +200,14 @@ layout_index = html.Div([
                                    'borderRadius':5,
                                    'height':50,'width':200,
                                'font-family':'minion'}),
-            ],
-            style={'display':'block'}),
-        
-        html.Div([
+            
+            html.Br(),html.Br(),html.Br(),
+            
+            html.Img(src='data:image/png;base64,{}'.format(equi_encoded_image.decode()),
+                     style={'width':100}),
+            
+            html.Br(),
+            
             html.H3('Master Data',
                     style={'color':'rgb(0,123,255)','textAlign':'center',
                            'font-family':'avenir'}),
@@ -220,12 +254,18 @@ layout_index = html.Div([
                                    'borderRadius':5,
                                    'height':50,'width':200,
                                'font-family':'minion'}),
-            ],
-            style={'display':'block'}),
-        
-        html.Div([html.H3('Reports',
+            
+            html.Br(),html.Br(),html.Br(),
+            
+            html.Img(src='data:image/png;base64,{}'.format(report_encoded_image.decode()),
+                     style={'width':100}),
+            
+            html.Br(),
+            
+            html.H3('Reports',
                     style={'color':'rgb(0,123,255)','textAlign':'center',
                            'font-family':'avenir'}),
+                  
             html.Button(
                         id='report1-button',
                         n_clicks=0,
@@ -247,10 +287,6 @@ layout_index = html.Div([
                                'borderRadius':5,
                                'height':50,'width':200,
                                'font-family':'minion'}),
-            
-            ],
-                 style={'display':'block'}),
-
 
                       ],style={'textAlign':'center'}),
     
@@ -265,13 +301,8 @@ layout_index = html.Div([
                     dcc.Link('Navigate to "/user"', href='/user'), 
                     html.Div(id='container-button-timestamp'),
                         ],style={'display':'none'}),
-            html.Br(),
-            dcc.Link("Need to manage User Account Access? Click Here!", href='/register',
-                     style={'font-family':'avenir','fontSize':16}),
-            
-            html.Br(),html.Br(),
-            html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()),
-                     style={'height':125}),
+
+
             
             ],
         style={'textAlign':'center'})
@@ -1210,7 +1241,9 @@ app.validation_layout = html.Div([
     [Input('url', 'pathname'),]
      )
 def display_page(pathname):
-    if pathname == "/notification":
+    if pathname == "/":
+        return layout_index
+    elif pathname == "/notification":
         return notification_page
     elif pathname == "/order":
         return order_page
@@ -1235,6 +1268,7 @@ def display_page(pathname):
 @app.callback(
     Output('url','pathname'),
     [
+     Input('dummy-button','n_clicks'),
      Input('notif-button','n_clicks'),
      Input('order-button','n_clicks'),
      Input('user-button','n_clicks'),
@@ -1245,12 +1279,14 @@ def display_page(pathname):
      Input('report2-button','n_clicks'),
      ]
     )
-def menu_output(notif_button,order_button,user_button,equi_button,
+def menu_output(dummy_button,notif_button,order_button,user_button,equi_button,
                 damage_button,location_button,report1_button,report2_button):   
     ctx = dash.callback_context
     if ctx.triggered:
        eventid = ctx.triggered[0]['prop_id'].split('.')[0]
-       if eventid == 'notif-button':
+       if eventid == 'dummy-button':
+           path = '/'
+       elif eventid == 'notif-button':
            path = '/notification'
        elif eventid == 'order-button':
            path = '/order'
