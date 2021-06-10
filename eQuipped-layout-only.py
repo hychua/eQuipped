@@ -22,6 +22,8 @@ from dash.exceptions import PreventUpdate
 app = dash.Dash(__name__)
 server = app.server
 
+app.title = "eQuipped Layout Only - Development"
+
 # load login table
 sql = "SELECT * FROM login"
 #df = querydatafromdatabase(sql,[],["id","name","password"])
@@ -136,20 +138,22 @@ url_bar_and_content_div = html.Div([
 
 layout_index = html.Div([
                 html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()),
-                     style={'height':100,'display':'inline-block'}),
+                     style={'height':150,'display':'inline-block'}),
                 html.Div([
                     html.H1('WELCOME',
                             style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir'}),
+                                   'font-family':'avenir',
+                                   'fontSize':42}),
                     
                     html.H2('to eQuipped Maintenance Manager',
                             style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir'}),            
+                                   'font-family':'avenir',
+                                   'fontSize':32}),            
                         ],
                         style={'display':'inline-block','margin-left':50}),
                 
             dcc.Link("Need to Manage User Access? Click Here!", href='/register',
-                     style={'font-family':'avenir','fontSize':16,'display':'inline-block','float':'right'}),
+                     style={'font-family':'avenir','fontSize':18,'display':'inline-block','float':'right'}),
             
     html.Div(' ',
         style={'backgroundColor':'rgb(0,123,255)','height':20,'borderRadius':5}),
@@ -170,7 +174,9 @@ layout_index = html.Div([
     html.Div([
         html.H2('Which type of data do you need to manage?',
                             style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir'}),       
+                                   'font-family':'avenir',
+                                   'fontSize':32,
+                                   'textAlign':'center'}),       
         
         html.Div([
             html.Img(src='data:image/png;base64,{}'.format(order_encoded_image.decode()),
@@ -178,27 +184,27 @@ layout_index = html.Div([
             html.Br(),
             html.H3('Transactional Data',
                     style={'color':'rgb(0,123,255)','textAlign':'center',
-                           'font-family':'avenir'}),
+                           'font-family':'avenir','fontSize':28,}),
             html.Button(
                         id='notif-button',
                         n_clicks=0,
                         children='Notification',
-                        style={'fontSize':18,
+                        style={'fontSize':24,
                                'color':'rgb(255,255,255)',
                                'backgroundColor':'rgb(0,123,255)',
                                'borderRadius':5,
-                               'height':50,'width':200,
+                               'height':100,'width':'30%',
                                'font-family':'minion'}),
             html.Br(),html.Br(),
             html.Button(
                             id='order-button',
                             n_clicks=0,
                             children='Order',
-                            style={'fontSize':18,
+                            style={'fontSize':24,
                                    'color':'rgb(255,255,255)',
                                    'backgroundColor':'rgb(0,123,255)',
                                    'borderRadius':5,
-                                   'height':50,'width':200,
+                                   'height':100,'width':'30%',
                                'font-family':'minion'}),
             
             html.Br(),html.Br(),html.Br(),
@@ -210,49 +216,49 @@ layout_index = html.Div([
             
             html.H3('Master Data',
                     style={'color':'rgb(0,123,255)','textAlign':'center',
-                           'font-family':'avenir'}),
+                           'font-family':'avenir','fontSize':28,}),
             html.Button(
                         id='equi-button',
                         n_clicks=0,
                         children='Equipment',
-                        style={'fontSize':18,
+                        style={'fontSize':24,
                                'color':'rgb(255,255,255)',
                                'backgroundColor':'rgb(0,123,255)',
                                'borderRadius':5,
-                               'height':50,'width':200,
+                               'height':100,'width':'30%',
                             'font-family':'minion'}),
             html.Br(),html.Br(),
             html.Button(
                             id='user-button',
                             n_clicks=0,
                             children='User',
-                            style={'fontSize':18,
+                            style={'fontSize':24,
                                    'color':'rgb(255,255,255)',
                                    'backgroundColor':'rgb(0,123,255)',
                                    'borderRadius':5,
-                                   'height':50,'width':200,
+                                   'height':100,'width':'30%',
                                'font-family':'minion'}),
             html.Br(),html.Br(),
             html.Button(
                             id='damage-button',
                             n_clicks=0,
                             children='Damage',
-                            style={'fontSize':18,
+                            style={'fontSize':24,
                                    'color':'rgb(255,255,255)',
                                    'backgroundColor':'rgb(0,123,255)',
                                    'borderRadius':5,
-                                   'height':50,'width':200,
+                                   'height':100,'width':'30%',
                                'font-family':'minion'}),
             html.Br(),html.Br(),
             html.Button(
                             id='location-button',
                             n_clicks=0,
                             children='Location',
-                            style={'fontSize':18,
+                            style={'fontSize':24,
                                    'color':'rgb(255,255,255)',
                                    'backgroundColor':'rgb(0,123,255)',
                                    'borderRadius':5,
-                                   'height':50,'width':200,
+                                   'height':100,'width':'30%',
                                'font-family':'minion'}),
             
             html.Br(),html.Br(),html.Br(),
@@ -264,28 +270,28 @@ layout_index = html.Div([
             
             html.H3('Reports',
                     style={'color':'rgb(0,123,255)','textAlign':'center',
-                           'font-family':'avenir'}),
+                           'font-family':'avenir','fontSize':28,}),
                   
             html.Button(
                         id='report1-button',
                         n_clicks=0,
                         children='Equipment Report',
-                        style={'fontSize':18,
+                        style={'fontSize':24,
                                'color':'rgb(255,255,255)',
                                'backgroundColor':'rgb(0,123,255)',
                                'borderRadius':5,
-                               'height':50,'width':200,
+                               'height':100,'width':'30%',
                                'font-family':'minion'}),
             html.Br(),html.Br(),
             html.Button(
                         id='report2-button',
                         n_clicks=0,
                         children='Time Sheet Report',
-                        style={'fontSize':18,
+                        style={'fontSize':24,
                                'color':'rgb(255,255,255)',
                                'backgroundColor':'rgb(0,123,255)',
                                'borderRadius':5,
-                               'height':50,'width':200,
+                               'height':100,'width':'30%',
                                'font-family':'minion'}),
 
                       ],style={'textAlign':'center'}),
