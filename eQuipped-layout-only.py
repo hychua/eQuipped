@@ -6,8 +6,8 @@ Created on Tue May 18 09:46:36 2021
 """
 
 import dash
-import dash_auth
-import dash_split_pane
+#import dash_auth
+#import dash_split_pane
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
