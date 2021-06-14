@@ -7,6 +7,7 @@ Created on Tue May 18 09:46:36 2021
 
 import dash
 import dash_auth
+import dash_split_pane
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
@@ -137,164 +138,37 @@ url_bar_and_content_div = html.Div([
 ])
 
 layout_index = html.Div([
-                html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()),
-                     style={'height':150,'display':'inline-block'}),
-                html.Div([
-                    html.H1('WELCOME',
-                            style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir',
-                                   'fontSize':42}),
-                    
-                    html.H2('to eQuipped Maintenance Manager',
-                            style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir',
-                                   'fontSize':32}),            
-                        ],
-                        style={'display':'inline-block','margin-left':50}),
                 
-            dcc.Link("Need to Manage User Access? Click Here!", href='/register',
-                     style={'font-family':'avenir','fontSize':18,'display':'inline-block','float':'right'}),
             
     html.Div(' ',
         style={'backgroundColor':'rgb(0,123,255)','height':20,'borderRadius':5}),
         
-            html.Button(
-                        id='dummy-button',
-                        n_clicks=0,
-                        children='Dummy',
-                        style={'fontSize':18,
-                               'color':'rgb(0,123,255)',
-                               'backgroundColor':'rgb(255,255,255)',
-                               'borderRadius':5,
-                               'height':42,'width':200,
-                               'font-family':'minion', 'float':'right',
-                               'display':'none'}),    
-            
-    
     html.Div([
-        html.H2('Which type of data do you need to manage?',
+        html.H2('Please select the Tab of the data you wish to manage above.',
                             style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir',
-                                   'fontSize':32,
-                                   'textAlign':'center'}),       
-        
-        html.Div([
-            html.Img(src='data:image/png;base64,{}'.format(order_encoded_image.decode()),
-                     style={'width':100}),
-            html.Br(),
-            html.H3('Transactional Data',
-                    style={'color':'rgb(0,123,255)','textAlign':'center',
-                           'font-family':'avenir','fontSize':28,}),
-            html.Button(
-                        id='notif-button',
-                        n_clicks=0,
-                        children='Notification',
-                        style={'fontSize':24,
-                               'color':'rgb(255,255,255)',
-                               'backgroundColor':'rgb(0,123,255)',
-                               'borderRadius':5,
-                               'height':100,'width':'30%',
-                               'font-family':'minion'}),
-            html.Br(),html.Br(),
-            html.Button(
-                            id='order-button',
-                            n_clicks=0,
-                            children='Order',
-                            style={'fontSize':24,
-                                   'color':'rgb(255,255,255)',
-                                   'backgroundColor':'rgb(0,123,255)',
-                                   'borderRadius':5,
-                                   'height':100,'width':'30%',
-                               'font-family':'minion'}),
-            
-            html.Br(),html.Br(),html.Br(),
-            
-            html.Img(src='data:image/png;base64,{}'.format(equi_encoded_image.decode()),
-                     style={'width':100}),
-            
-            html.Br(),
-            
-            html.H3('Master Data',
-                    style={'color':'rgb(0,123,255)','textAlign':'center',
-                           'font-family':'avenir','fontSize':28,}),
-            html.Button(
-                        id='equi-button',
-                        n_clicks=0,
-                        children='Equipment',
-                        style={'fontSize':24,
-                               'color':'rgb(255,255,255)',
-                               'backgroundColor':'rgb(0,123,255)',
-                               'borderRadius':5,
-                               'height':100,'width':'30%',
-                            'font-family':'minion'}),
-            html.Br(),html.Br(),
-            html.Button(
-                            id='user-button',
-                            n_clicks=0,
-                            children='User',
-                            style={'fontSize':24,
-                                   'color':'rgb(255,255,255)',
-                                   'backgroundColor':'rgb(0,123,255)',
-                                   'borderRadius':5,
-                                   'height':100,'width':'30%',
-                               'font-family':'minion'}),
-            html.Br(),html.Br(),
-            html.Button(
-                            id='damage-button',
-                            n_clicks=0,
-                            children='Damage',
-                            style={'fontSize':24,
-                                   'color':'rgb(255,255,255)',
-                                   'backgroundColor':'rgb(0,123,255)',
-                                   'borderRadius':5,
-                                   'height':100,'width':'30%',
-                               'font-family':'minion'}),
-            html.Br(),html.Br(),
-            html.Button(
-                            id='location-button',
-                            n_clicks=0,
-                            children='Location',
-                            style={'fontSize':24,
-                                   'color':'rgb(255,255,255)',
-                                   'backgroundColor':'rgb(0,123,255)',
-                                   'borderRadius':5,
-                                   'height':100,'width':'30%',
-                               'font-family':'minion'}),
-            
-            html.Br(),html.Br(),html.Br(),
-            
-            html.Img(src='data:image/png;base64,{}'.format(report_encoded_image.decode()),
-                     style={'width':100}),
-            
-            html.Br(),
-            
-            html.H3('Reports',
-                    style={'color':'rgb(0,123,255)','textAlign':'center',
-                           'font-family':'avenir','fontSize':28,}),
-                  
-            html.Button(
-                        id='report1-button',
-                        n_clicks=0,
-                        children='Equipment Report',
-                        style={'fontSize':24,
-                               'color':'rgb(255,255,255)',
-                               'backgroundColor':'rgb(0,123,255)',
-                               'borderRadius':5,
-                               'height':100,'width':'30%',
-                               'font-family':'minion'}),
-            html.Br(),html.Br(),
-            html.Button(
-                        id='report2-button',
-                        n_clicks=0,
-                        children='Time Sheet Report',
-                        style={'fontSize':24,
-                               'color':'rgb(255,255,255)',
-                               'backgroundColor':'rgb(0,123,255)',
-                               'borderRadius':5,
-                               'height':100,'width':'30%',
-                               'font-family':'minion'}),
-
-                      ],style={'textAlign':'center'}),
+                                   'font-family':'avenir',}),      
+        html.H3("Here is a brief guide of how to use each tab:",style={'color':'rgb(0,123,255)',
+                                   'font-family':'minion'}),
+        html.H4("Transacitonal Data:"),
+        html.P("> Notification: usually created by the operator; this is created to inform maintenance of a malfunction in the machine.",style={
+                                   'font-family':'minion'}),
+        html.P("> Orders: usually created by technicians; this is to record details of the maintenance work.",style={
+                                   'font-family':'minion'}),
+        html.H4("Master Data:"),
+        html.P("> Users: manage employee records like name and location assignment",style={
+                                   'font-family':'minion'}),
+        html.P("> Equipment: manage specifications of machines or tools",style={
+                                   'font-family':'minion'}),
+        html.P("> Damage: add/edit/delete types of damage",style={
+                                   'font-family':'minion'}),
+        html.P("> Location: add/edit/delete names of locations in the plant",style={
+                                   'font-family':'minion'}),
+        html.H4("Reports:"),
+        html.P("> Report 1: Equipment Repair Report by Damage and Order types",style={
+                                   'font-family':'minion'}),
+        html.P("> Report 2: Time Sheet Report of Employees per Month",style={
+                                   'font-family':'minion'}),
+    
     
     html.Div([html.Br(),
                 html.Div([
@@ -1223,7 +1097,45 @@ report2_page = html.Div([
      
 
 # index layout
-app.layout = url_bar_and_content_div
+app.layout = html.Div([
+    html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()),
+                     style={'height':100,'display':'inline-block'}),
+                html.Div([
+                    html.H1('WELCOME',
+                            style={'color':'rgb(0,123,255)',
+                                   'font-family':'avenir'}),
+                    
+                    html.H2('to e-Quipped Maintenance Manager',
+                            style={'color':'rgb(0,123,255)',
+                                   'font-family':'avenir'}),            
+                        ],
+                        style={'display':'inline-block','margin-left':50}),
+                
+            dcc.Link("Need to Manage User Access? Click Here!", href='/register',
+                     style={'font-family':'avenir','fontSize':16,'display':'inline-block','float':'right'}),
+    
+    dcc.Tabs(id='tabs', value='home', children=[
+        dcc.Tab(label='Home', value='home',style={'color':'rgb(0,123,255)',
+                                   'font-family':'avenir'}),
+        dcc.Tab(label='Notification', value='notif',style={'color':'rgb(0,123,255)',
+                                   'font-family':'avenir'}),
+        dcc.Tab(label='Orders', value='orders',style={'color':'rgb(0,123,255)',
+                                   'font-family':'avenir'}),
+        dcc.Tab(label='Users', value='users',style={'color':'rgb(0,123,255)',
+                                   'font-family':'avenir'}),
+        dcc.Tab(label='Equipment', value='equi',style={'color':'rgb(0,123,255)',
+                                   'font-family':'avenir'}),
+        dcc.Tab(label='Damage', value='damage',style={'color':'rgb(0,123,255)',
+                                   'font-family':'avenir'}),
+        dcc.Tab(label='Location', value='loc',style={'color':'rgb(0,123,255)',
+                                   'font-family':'avenir'}),
+        dcc.Tab(label='Report 1', value='report1',style={'color':'rgb(0,123,255)',
+                                   'font-family':'avenir'}),
+        dcc.Tab(label='Report 2', value='report2',style={'color':'rgb(0,123,255)',
+                                   'font-family':'avenir'}),
+    ]),
+    html.Div(id='tabs-content')
+])
 
 # "complete" layout
 app.validation_layout = html.Div([
@@ -1239,6 +1151,30 @@ app.validation_layout = html.Div([
     report2_page,
     registration_page,
 ])
+
+# Tab callbacks
+@app.callback(Output('tabs-content', 'children'),
+              Input('tabs', 'value'))
+def render_content(tab):
+    if tab == 'home':
+        return layout_index
+    elif tab == 'notif':
+        return notification_page
+    elif tab == 'orders':
+        return order_page
+    elif tab == 'users':
+        return user_page
+    elif tab == 'equi':
+        return equipment_page
+    elif tab == 'damage':
+        return damage_page
+    elif tab == 'loc':
+        return location_page
+    elif tab == 'report1':
+        return report1_page
+    elif tab == 'report2':
+        return report2_page
+
 
 # Index callbacks
 @app.callback(
