@@ -1137,20 +1137,6 @@ app.layout = html.Div([
     html.Div(id='tabs-content')
 ])
 
-# "complete" layout
-app.validation_layout = html.Div([
-    url_bar_and_content_div,
-    layout_index,
-    notification_page,
-    order_page,
-    user_page,
-    equipment_page,
-    damage_page,
-    location_page,
-    report1_page,
-    report2_page,
-    registration_page,
-])
 
 # Tab callbacks
 @app.callback(Output('tabs-content', 'children'),
@@ -1174,79 +1160,6 @@ def render_content(tab):
         return report1_page
     elif tab == 'report2':
         return report2_page
-
-
-# Index callbacks
-@app.callback(
-    Output('page-content', 'children'),
-              
-    [Input('url', 'pathname'),]
-     )
-def display_page(pathname):
-    if pathname == "/":
-        return layout_index
-    elif pathname == "/notification":
-        return notification_page
-    elif pathname == "/order":
-        return order_page
-    elif pathname == "/user":
-        return user_page
-    elif pathname == "/equipment":
-        return equipment_page
-    elif pathname == "/damage":
-        return damage_page
-    elif pathname == "/location":
-        return location_page
-    elif pathname == "/report1":
-        return report1_page
-    elif pathname == "/report2":
-        return report2_page
-    elif pathname == "/register":
-        return registration_page
-    else:
-        return layout_index
-    
-# main menu callbacks
-@app.callback(
-    Output('url','pathname'),
-    [
-     Input('dummy-button','n_clicks'),
-     Input('notif-button','n_clicks'),
-     Input('order-button','n_clicks'),
-     Input('user-button','n_clicks'),
-     Input('equi-button','n_clicks'),
-     Input('damage-button','n_clicks'),
-     Input('location-button','n_clicks'),
-     Input('report1-button','n_clicks'),
-     Input('report2-button','n_clicks'),
-     ]
-    )
-def menu_output(dummy_button,notif_button,order_button,user_button,equi_button,
-                damage_button,location_button,report1_button,report2_button):   
-    ctx = dash.callback_context
-    if ctx.triggered:
-       eventid = ctx.triggered[0]['prop_id'].split('.')[0]
-       if eventid == 'dummy-button':
-           path = '/'
-       elif eventid == 'notif-button':
-           path = '/notification'
-       elif eventid == 'order-button':
-           path = '/order'
-       elif eventid == 'user-button':
-           path = '/user'
-       elif eventid == 'equi-button':
-           path = '/equipment'
-       elif eventid == 'damage-button':
-           path = '/damage'
-       elif eventid == 'location-button':
-           path = '/location'
-       elif eventid == 'report1-button':
-           path = '/report1'
-       elif eventid == 'report2-button':
-           path = '/report2'
-       else:
-           path = '/'
-    return path
 
 # login registration callbacks
 @app.callback(
