@@ -34,15 +34,15 @@ data=df.to_dict("rows")
 name = df.name.unique().tolist()
 
 # Keep this out of source code repository - save in a file or a database
-VALID_USERNAME_PASSWORD_PAIRS = [
-    ['hello', 'world'],
-    ['admin','admin123']
-]
+#VALID_USERNAME_PASSWORD_PAIRS = [
+#    ['hello', 'world'],
+#    ['admin','admin123']
+#]
 
-auth = dash_auth.BasicAuth(
-    app,
-    VALID_USERNAME_PASSWORD_PAIRS
-)
+#auth = dash_auth.BasicAuth(
+#    app,
+#   VALID_USERNAME_PASSWORD_PAIRS
+#)
 
 #def querydatafromdatabase(sql, values,dbcolumns):
  #   db = psycopg2.connect(
@@ -132,10 +132,10 @@ equi_encoded_image = base64.b64encode(open(equi_icon, 'rb').read())
 report_icon = 'report_icon.png' # replace with your own image
 report_encoded_image = base64.b64encode(open(report_icon, 'rb').read())
 
-url_bar_and_content_div = html.Div([
-    dcc.Location(id='url', refresh=False),
-    html.Div(id='page-content')
-])
+#url_bar_and_content_div = html.Div([
+#    dcc.Location(id='url', refresh=False),
+#    html.Div(id='page-content')
+#])
 
 layout_index = html.Div([
                 
