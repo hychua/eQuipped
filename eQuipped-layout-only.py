@@ -324,32 +324,42 @@ layout_index = html.Div([
         style={'backgroundColor':'rgb(0,123,255)','height':20,'borderRadius':5}),
         
     html.Div([
-        html.H2('Please select the Tab of the data you wish to manage above.',
+        html.H2('Please select the Tab of the data you wish to manage on the left.',
                             style={'color':'rgb(0,123,255)',
                                    'font-family':'avenir',}),      
         html.H3("Here is a brief guide of how to use each tab:",style={'color':'rgb(0,123,255)',
                                    'font-family':'minion'}),
-        html.H4("Transacitonal Data:"),
-        html.P("> Notification: usually created by the operator; this is created to inform maintenance of a malfunction in the machine.",style={
+        html.H4("Transacitonal Data:",style={'color':'rgb(0,123,255)'}),
+        html.Div([
+            html.P("> Notification: usually created by the operator; this is created to inform maintenance of a malfunction in the machine.",style={'color':'rgb(0,123,255)',
                                    'font-family':'minion'}),
-        html.P("> Orders: usually created by technicians; this is to record details of the maintenance work.",style={
+            html.P("> Orders: usually created by technicians; this is to record details of the maintenance work.",style={'color':'rgb(0,123,255)',
                                    'font-family':'minion'}),
-        html.H4("Master Data:"),
-        html.P("> Users: manage employee records like name and location assignment",style={
+        ],style={'margin-left':25}
+                 ),
+        
+        html.H4("Master Data:",style={'color':'rgb(0,123,255)'}),
+        html.Div([
+            html.P("> Users: manage employee records like name and location assignment",style={'color':'rgb(0,123,255)',
                                    'font-family':'minion'}),
-        html.P("> Equipment: manage specifications of machines or tools",style={
+            html.P("> Equipment: manage specifications of machines or tools",style={'color':'rgb(0,123,255)',
                                    'font-family':'minion'}),
-        html.P("> Damage: add/edit/delete types of damage",style={
+            html.P("> Damage: add/edit/delete types of damage",style={'color':'rgb(0,123,255)',
                                    'font-family':'minion'}),
-        html.P("> Location: add/edit/delete names of locations in the plant",style={
+            html.P("> Location: add/edit/delete names of locations in the plant",style={'color':'rgb(0,123,255)',
                                    'font-family':'minion'}),
-        html.H4("Reports:"),
-        html.P("> Report 1: Equipment Repair Report by Damage and Order types",style={
+        ],style={'margin-left':25}
+                 ),
+        
+        html.H4("Reports:",style={'color':'rgb(0,123,255)'}),
+        html.Div([
+            html.P("> Report 1: Equipment Repair Report by Damage and Order types",style={'color':'rgb(0,123,255)',
                                    'font-family':'minion'}),
-        html.P("> Report 2: Time Sheet Report of Employees per Month",style={
+            html.P("> Report 2: Time Sheet Report of Employees per Month",style={'color':'rgb(0,123,255)',
                                    'font-family':'minion'}),
-              
-    
+            ],style={'margin-left':25}
+            ),
+        
         ])
     ])
 
@@ -1266,7 +1276,9 @@ report2_page = html.Div([
 app.layout = url_bar_and_content_div
 
 layout2 = html.Div([
-    html.Button(
+    
+                html.Div([
+                    html.Button(
                         id='reg-button',
                         n_clicks=0,
                         children='Manage User Access',
@@ -1277,43 +1289,45 @@ layout2 = html.Div([
                                'height':42,'width':200,
                                'font-family':'minion', 'display':'inline-block','float':'right'}),
 
-    html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()),
+                html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()),
                      style={'height':100,'display':'inline-block'}),
-                html.Div([
-                    html.H1('WELCOME',
+                
+                    html.Div([html.H1('WELCOME',
                             style={'color':'rgb(0,123,255)',
                                    'font-family':'avenir'}),
                     
                     html.H2('to e-Quipped Maintenance Manager',
                             style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir'}),            
+                                   'font-family':'avenir'}),    
+                    ],style={'display':'inline-block','margin-left':50}),
+                            
                         ],
-                        style={'display':'inline-block','margin-left':50}),
+                        style={}),
 
     html.Div([
         dcc.Tabs(id='tabs', value='home', children=[
         dcc.Tab(label='Home', value='home',style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir'}),
+                                   'font-family':'avenir','fontSize':18}),
         dcc.Tab(label='Notification', value='notif',style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir'}),
+                                   'font-family':'avenir','fontSize':18}),
         dcc.Tab(label='Orders', value='orders',style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir'}),
+                                   'font-family':'avenir','fontSize':18}),
         dcc.Tab(label='Users', value='users',style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir'}),
+                                   'font-family':'avenir','fontSize':18}),
         dcc.Tab(label='Equipment', value='equi',style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir'}),
+                                   'font-family':'avenir','fontSize':18}),
         dcc.Tab(label='Damage', value='damage',style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir'}),
+                                   'font-family':'avenir','fontSize':18}),
         dcc.Tab(label='Location', value='loc',style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir'}),
+                                   'font-family':'avenir','fontSize':18}),
         dcc.Tab(label='Report 1', value='report1',style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir'}),
+                                   'font-family':'avenir','fontSize':18}),
         dcc.Tab(label='Report 2', value='report2',style={'color':'rgb(0,123,255)',
-                                   'font-family':'avenir'})
+                                   'font-family':'avenir','fontSize':18})
         ]),
     
-    ]),
-    html.Div(id='tabs-content'),
+    ], style={}),
+    html.Div(id='tabs-content', style={}),
 
 ])
 
