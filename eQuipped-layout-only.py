@@ -329,33 +329,33 @@ layout_index = html.Div([
                                    'font-family':'avenir',}),      
         html.H3("Here is a brief guide of how to use each tab:",style={'color':'rgb(0,123,255)',
                                    'font-family':'minion'}),
-        html.H4("Transacitonal Data:",style={'color':'rgb(0,123,255)'}),
+        html.H4("Transacitonal Data:"),
         html.Div([
-            html.P("> Notification: usually created by the operator; this is created to inform maintenance of a malfunction in the machine.",style={'color':'rgb(0,123,255)',
+            html.P("> Notification: usually created by the operator; this is created to inform maintenance of a malfunction in the machine.",style={
                                    'font-family':'minion'}),
-            html.P("> Orders: usually created by technicians; this is to record details of the maintenance work.",style={'color':'rgb(0,123,255)',
+            html.P("> Orders: usually created by technicians; this is to record details of the maintenance work.",style={
                                    'font-family':'minion'}),
         ],style={'margin-left':25}
                  ),
         
-        html.H4("Master Data:",style={'color':'rgb(0,123,255)'}),
+        html.H4("Master Data:"),
         html.Div([
-            html.P("> Users: manage employee records like name and location assignment",style={'color':'rgb(0,123,255)',
+            html.P("> Users: manage employee records like name and location assignment",style={
                                    'font-family':'minion'}),
-            html.P("> Equipment: manage specifications of machines or tools",style={'color':'rgb(0,123,255)',
+            html.P("> Equipment: manage specifications of machines or tools",style={
                                    'font-family':'minion'}),
-            html.P("> Damage: add/edit/delete types of damage",style={'color':'rgb(0,123,255)',
+            html.P("> Damage: add/edit/delete types of damage",style={
                                    'font-family':'minion'}),
-            html.P("> Location: add/edit/delete names of locations in the plant",style={'color':'rgb(0,123,255)',
+            html.P("> Location: add/edit/delete names of locations in the plant",style={
                                    'font-family':'minion'}),
         ],style={'margin-left':25}
                  ),
         
-        html.H4("Reports:",style={'color':'rgb(0,123,255)'}),
+        html.H4("Reports:"),
         html.Div([
-            html.P("> Report 1: Equipment Repair Report by Damage and Order types",style={'color':'rgb(0,123,255)',
+            html.P("> Report 1: Equipment Repair Report by Damage and Order types",style={
                                    'font-family':'minion'}),
-            html.P("> Report 2: Time Sheet Report of Employees per Month",style={'color':'rgb(0,123,255)',
+            html.P("> Report 2: Time Sheet Report of Employees per Month",style={
                                    'font-family':'minion'}),
             ],style={'margin-left':25}
             ),
